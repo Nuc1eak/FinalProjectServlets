@@ -59,7 +59,6 @@ public class JDBCUserDao implements UserDao {
             insertUserToTable.setString(3, entity.getFirstName());
             insertUserToTable.setString(4, entity.getSecondName());
             insertUserToTable.setString(5, entity.getRole().toString());
-            insertUserToTable.setString(6, entity.getCode());
 
             insertUserToTable.executeUpdate();
             insertUserToTable.executeBatch();

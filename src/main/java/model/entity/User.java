@@ -18,7 +18,6 @@ public class User {
 
     private String firstName;
     private String secondName;
-    private String code;
 
     private List<Check> allChecks = new ArrayList<>();
 
@@ -45,9 +44,6 @@ public class User {
 
     public String getSecondName() { return secondName; }
     public void setSecondName(String secondName) { this.secondName = secondName; }
-
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
 
     public List<Check> getAllChecks() { return allChecks; }
     public void setAllChecks(List<Check> allChecks) { this.allChecks = allChecks; }

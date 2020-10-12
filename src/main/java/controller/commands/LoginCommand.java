@@ -78,7 +78,7 @@ public class LoginCommand implements Command {
         } else if (role == User.ROLE.superCashier) {
             return "redirect: /app/super_cashier";
         } else if (role == User.ROLE.expert) {
-            return "redirect: /app/expert";
+            return "/WEB-INF/expert/storage.jsp";
         } else return "/login.jsp";
     }
 }

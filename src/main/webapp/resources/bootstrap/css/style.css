@@ -138,48 +138,6 @@ table tr th { color: #688a7e;}
 
 }
 
-.login-img-body{
-
-  background: url('../img/car.jpg') no-repeat center center fixed;
-
-  -webkit-background-size: cover;
-
-  -moz-background-size: cover;
-
-  -o-background-size: cover;
-
-  background-size: cover;
-
-}
-
-.login-img2-body{
-
-  background: url('../img/car.jpg') no-repeat center center fixed;
-
-  -webkit-background-size: cover;
-
-  -moz-background-size: cover;
-
-  -o-background-size: cover;
-
-  background-size: cover;
-
-}
-
-.login-img3-body{
-
-  background: url('../img/car.jpg') no-repeat center center fixed;
-
-  -webkit-background-size: cover;
-
-  -moz-background-size: cover;
-
-  -o-background-size: cover;
-
-  background-size: cover;
-
-}
-
 
 
 .login-form {
@@ -1248,7 +1206,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176) !important;
 
-    };
+    }
 
 }
 
@@ -2390,7 +2348,7 @@ div[data-role="editor-toolbar"] {
 
 }
 
-}
+
 
 .panel.panel-default.panel-heading {
 
@@ -3004,7 +2962,7 @@ div[data-role="editor-toolbar"] {
 
 }
 
-* /Widget-Content */
+
 
 
 
@@ -3360,7 +3318,7 @@ div[data-role="editor-toolbar"] {
 
 /*-----	map-----*/
 
-* Google maps */
+* Google maps *
 
 
 

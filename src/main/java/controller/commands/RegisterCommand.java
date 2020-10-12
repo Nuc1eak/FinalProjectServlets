@@ -37,7 +37,6 @@ public class RegisterCommand implements Command {
         user.setSecondName(request.getParameter("second_name"));
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("confirm_password"));
-        user.setCode(request.getParameter("cashier_code"));
         user.setRole(User.ROLE.valueOf(request.getParameter("role")));
         return user;
     }
@@ -49,7 +48,6 @@ public class RegisterCommand implements Command {
         Pattern secondNamePattern = Pattern.compile(regexBundle.getString("register.secondName"));
         Pattern loginPattern = Pattern.compile(regexBundle.getString("register.login"));
         Pattern passwordPattern = Pattern.compile(regexBundle.getString("register.password"));
-        Pattern codePattern = Pattern.compile(regexBundle.getString("register.code"));
 
         Locale locale = ThreadLocalWrapper.getLocale();
         ResourceBundle errorsBundle = ResourceBundle.getBundle("errors", locale);
@@ -68,9 +66,6 @@ public class RegisterCommand implements Command {
         if (!passwordPattern.matcher(user.getPassword()).matches()) {
             request.setAttribute("wrongPassword", errorsBundle.getString("register.password"));
             flag = false;
-        }
-        if (!codePattern.matcher(user.getCode()).matches()) {
-            request.setAttribute("wrongCode", errorsBundle.getString("register.code"));
         }
         return flag;
     }

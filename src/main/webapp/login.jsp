@@ -29,16 +29,25 @@
             opacity: 1;
         }
     </style>
-    <body class="login-img3-body">
+    <body>
+    <header class="navbar-header header dark-bg">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div style="text-align: right" id="lang-div">
+                <a href="?locale=en"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/us.png"><fmt:message key="lang.en"/></a>
+                <br>
+                <a href="?locale=ua"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/ua.png"><fmt:message key="lang.ua"/></a>
+            </div>
+        </div>
+    </header>
     <div class="container">
         <form class="login-form" method="post" action="${pageContext.request.contextPath}/app/login">
             <div class="login-wrap">
-                <div style="text-align: right" id="lang-div">
-                    <a href="?locale=en"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/us.png"><fmt:message key="lang.en"/></a>
-                    <br>
-                    <a href="?locale=ua"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/ua.png"><fmt:message key="lang.ua"/></a>
-                </div>
-                <p class="login-img"><i class="icon_lock_alt"></i></p>
+<%--                <div style="text-align: right" id="lang-div">--%>
+<%--                    <a href="?locale=en"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/us.png"><fmt:message key="lang.en"/></a>--%>
+<%--                    <br>--%>
+<%--                    <a href="?locale=ua"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/ua.png"><fmt:message key="lang.ua"/></a>--%>
+<%--                </div>--%>
+<%--                <p class="login-img"><i class="icon_lock_alt"></i></p>--%>
                 <div class="form-group">
                     <div class="text-center text-danger"><p><c:out value="${requestScope.info}"/></p></div>
                 </div>

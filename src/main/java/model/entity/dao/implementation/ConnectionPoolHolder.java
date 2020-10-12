@@ -15,10 +15,10 @@ public class ConnectionPoolHolder {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
                     dataSource = new BasicDataSource();
-                    dataSource.setDriverClassName("database.driver.class");
-                    dataSource.setUrl("database.url");
-                    dataSource.setUsername("database.user");
-                    dataSource.setPassword("database.password");
+                    dataSource.setDriverClassName(bundle.getString("database.driver.class"));
+                    dataSource.setUrl(bundle.getString("database.url"));
+                    dataSource.setUsername(bundle.getString("database.user"));
+                    dataSource.setPassword(bundle.getString("database.password"));
                     dataSource.setMaxOpenPreparedStatements(100);
                 }
             }

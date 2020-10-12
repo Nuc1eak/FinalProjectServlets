@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:bundle basename="index" prefix="register.">
     <html>
@@ -47,20 +46,24 @@
     <body>
     <!-- container section start -->
     <section id="container" class="">
-        <!--header start-->
-        <header class="navbar-header header dark-bg">
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <div class="nav navbar-nav">
-                    <ul>
-
-                        <!-- user login dropdown end -->
-                    </ul>
-                    <!-- notificatoin dropdown end-->
-                </div>
+        <header class="header dark-bg">
+            <div style="text-align: right" id="lang-div">
+                <a href="?locale=en"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/us.png"><fmt:message key="lang.en"/></a>
+                <br>
+                <a href="?locale=ua"><img src="${pageContext.request.contextPath}/resources/bootstrap/img/icons/ua.png"><fmt:message key="lang.ua"/></a>
             </div>
         </header>
-        <!--header end-->
+        <style>
+            #lang-div img {
+                width: 20px;
+                height: 20px;
+                opacity: 0.7;
+            }
+
+            #lang-div img:hover {
+                opacity: 1;
+            }
+        </style>
 
 
         <!--main content start-->
@@ -109,13 +112,6 @@
                                             <label for="confirm_password" class="control-label col-lg-2"><fmt:message key="password.repeat"/> <span class="required">*</span></label>
                                             <div class="col-lg-10">
                                                 <input class="form-control" id="confirm_password" name="confirm_password" type="password" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="text-center text-danger"><p><c:out value="${requestScope.wrongCode}"/></p></div>
-                                            <label for="cashier_code" class="control-label col-lg-2"><fmt:message key="cashierCode"/> <span class="required">*</span></label>
-                                            <div class="col-lg-10">
-                                                <input class="form-control" id="cashier_code" name="cashier_code" type="text" />
                                             </div>
                                         </div>
                                         <div class="form-group">
