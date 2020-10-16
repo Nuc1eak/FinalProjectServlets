@@ -26,7 +26,6 @@ public class LoginCommand implements Command {
         } catch (InvalidInputException ex) {
             return informAboutWrongInput(request, ex.getMessage());
         }
-
     }
 
     private User checkLoginAndPassword(HttpServletRequest request, String login, String password) {
@@ -78,7 +77,7 @@ public class LoginCommand implements Command {
         } else if (role == User.ROLE.superCashier) {
             return "redirect: /app/super_cashier";
         } else if (role == User.ROLE.expert) {
-            return "/WEB-INF/expert/storage.jsp";
+            return "redirect: /app/expert";
         } else return "/login.jsp";
     }
 }

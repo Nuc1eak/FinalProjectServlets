@@ -7,7 +7,7 @@
 
     <br/>
 
-    <a href="/login.jsp">Login</a>
+    <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
 
     <br/>
 

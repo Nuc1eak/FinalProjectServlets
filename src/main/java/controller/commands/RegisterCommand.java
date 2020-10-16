@@ -21,14 +21,12 @@ public class RegisterCommand implements Command {
             return "/register.jsp";
         }
         if (service.ifUserExist(user.getLogin())){
-            informAboutWrongInput(request);
+            return informAboutWrongInput(request);
         } else {
             user = service.registerNewUser(user);
             setUserToSession(request, user);
             return getRedirectPath(user.getRole());
         }
-
-        return null;
     }
 
     private User createUser(HttpServletRequest request) {
@@ -59,10 +57,10 @@ public class RegisterCommand implements Command {
             request.setAttribute("wrongSecondName", errorsBundle.getString("register.secondName"));
             flag = false;
         }
-        if (!loginPattern.matcher(user.getLogin()).matches()) {
-            request.setAttribute("wrongLogin", errorsBundle.getString("register.login"));
-            flag = false;
-        }
+//        if (!loginPattern.matcher(user.getLogin()).matches()) {
+//            request.setAttribute("wrongLogin", errorsBundle.getString("register.login"));
+//            flag = false;
+//        }
         if (!passwordPattern.matcher(user.getPassword()).matches()) {
             request.setAttribute("wrongPassword", errorsBundle.getString("register.password"));
             flag = false;
