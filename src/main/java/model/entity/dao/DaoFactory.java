@@ -9,6 +9,8 @@ public abstract class DaoFactory {
 
     public abstract ProductDao createProductDao();
 
+    public abstract CheckDao createCheckDao();
+
     public static DaoFactory getInstance() {
         if (daoFactory == null) {
             synchronized (DaoFactory.class) {

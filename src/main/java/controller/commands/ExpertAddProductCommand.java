@@ -39,7 +39,6 @@ public class ExpertAddProductCommand implements Command {
     }
 
     private boolean validateProduct(HttpServletRequest request, Product product) {
-        boolean isValid = true;
         ResourceBundle regexBundle = ResourceBundle.getBundle("regex");
         Pattern namePattern = Pattern.compile(regexBundle.getString("product.name"));
         Pattern codePattern = Pattern.compile(regexBundle.getString("product.code"));
@@ -50,26 +49,23 @@ public class ExpertAddProductCommand implements Command {
         ResourceBundle errorsBundle = ResourceBundle.getBundle("errors", locale);
 
         if (!namePattern.matcher(product.getName()).matches()) {
-            request.setAttribute("wrongName", errorsBundle.getString("product.name"));
-            isValid = false;
+            request.setAttribute("productError", errorsBundle.getString("product.name"));
+            return false;
+        } else if (!codePattern.matcher(product.getCode()).matches()) {
+            request.setAttribute("productError", errorsBundle.getString("product.code"));
+            return false;
+        } else if (!amountPattern.matcher(product.getAmount()).matches()) {
+            request.setAttribute("productError", errorsBundle.getString("product.amount"));
+            return false;
+        } else if (!pricePattern.matcher(product.getPrice()).matches()) {
+            request.setAttribute("productError", errorsBundle.getString("product.price"));
+            return false;
         }
-        if (!codePattern.matcher(product.getCode()).matches()) {
-            request.setAttribute("wrongCode", errorsBundle.getString("product.code"));
-            isValid = false;
-        }
-        if (!amountPattern.matcher(product.getAmount()).matches()) {
-            request.setAttribute("wrongAmount", errorsBundle.getString("product.amount"));
-            isValid = false;
-        }
-        if (!pricePattern.matcher(product.getPrice()).matches()) {
-            request.setAttribute("wrongPrice", errorsBundle.getString("product.price"));
-            isValid = false;
-        }
-        return isValid;
+        return true;
     }
 
     private String informAboutWrongInput(HttpServletRequest request) {
-        request.setAttribute("productExist", "This product already exist in system. Please pick other name or code.");
+        request.setAttribute("productError", "This product already exist in system. Please pick other name or code.");
         return "redirect: /app/expert";
     }
 }

@@ -1,5 +1,6 @@
 package model.entity.dao.implementation;
 
+import model.entity.dao.CheckDao;
 import model.entity.dao.DaoFactory;
 import model.entity.dao.ProductDao;
 import model.entity.dao.UserDao;
@@ -16,6 +17,9 @@ public class JDBCDaoFactory extends DaoFactory {
 
     @Override
     public ProductDao createProductDao() { return new JDBCProductDao(getConnection()); }
+
+    @Override
+    public CheckDao createCheckDao() { return new JDBCCheckDao(getConnection()); }
 
     private Connection getConnection() {
         try {

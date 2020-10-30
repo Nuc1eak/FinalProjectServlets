@@ -134,17 +134,8 @@
                             </section>
 
                             <nav>
-
                                 <ul class="pagination">
                                     <c:forEach var="i" begin="1" end="${requestScope.totalProductPages}">
-<%--                                        <li class="page-item">--%>
-<%--                                            <c:if test="${param.productPage!=null}">--%>
-<%--                                                <a class="page-link" href="${pageContext.request.contextPath}/app/expert?productPage=${param.productPage}">${i}</a>--%>
-<%--                                            </c:if>--%>
-<%--                                            <c:if test="${param.productPage==null}">--%>
-<%--                                                <a class="page-link" href="${pageContext.request.contextPath}/app/expert?productPage=${i}">${i}</a>--%>
-<%--                                            </c:if>--%>
-<%--                                        </li>--%>
                                         <c:choose>
                                             <c:when test="${param.currentPage eq i}">
                                                 <li class="page-item active">
@@ -168,20 +159,17 @@
                     </div>
 
                     <form class="form-validate form-horizontal" id="new_product_form" method="post" action="${pageContext.request.contextPath}/app/expert/newProduct">
-                        <div class="text-center text-danger"><p><c:out value="${requestScope.productExist}"/></p></div>
+                        <div class="text-center text-danger"><p><c:out value="${requestScope.productError}"/></p></div>
                         <div class="form-row align-items-center">
                             <div class="col align-self-center">
-                                <div class="text-center text-danger"><p><c:out value="${requestScope.wrongName}"/></p></div>
                                 <label for="product_name" class="control-label col-lg-2"><fmt:message key="table.name"/></label>
                                 <input class="form-control" id="product_name" name="product_name" type="text"/>
                             </div>
                             <div class="col align-self-center">
-                                <div class="text-center text-danger"><p><c:out value="${requestScope.wrongCode}"/></p></div>
                                 <label for="product_code" class="control-label col-lg-2"><fmt:message key="table.code"/></label>
                                 <input class="form-control" id="product_code" name="product_code" type="text"/>
                             </div>
                             <div class="col align-self-center">
-                                <div class="text-center text-danger"><p><c:out value="${requestScope.wrongAmount}"/></p></div>
                                 <label for="product_amount" class="control-label col-lg-2"><fmt:message key="table.quantity"/></label>
                                 <input class="form-control" id="product_amount" name="product_amount" type="text"/>
                             </div>
@@ -193,7 +181,6 @@
                                 </select>
                             </div>
                             <div class="col align-self-center">
-                                <div class="text-center text-danger"><p><c:out value="${requestScope.wrongPrice}"/></p></div>
                                 <label for="product_price" class="control-label col-lg-2"><fmt:message key="table.price"/></label>
                                 <input class="form-control" id="product_price" name="product_price" type="text"/>
                             </div>

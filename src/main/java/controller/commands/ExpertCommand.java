@@ -22,11 +22,18 @@ public class ExpertCommand implements Command {
 
             handleProductPageNumber(request, productList, offset);
 
-
+            handleErrors(request);
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return "/WEB-INF/expert/storage.jsp";
+    }
+
+    private void handleErrors(HttpServletRequest request) {
+        Optional.ofNullable((String)request.getSession().getAttribute("productError")).ifPresent(x-> {
+            request.getSession().removeAttribute("productError");
+            request.setAttribute("productError", x);
+        });
     }
 
     private void handleProductPageNumber(HttpServletRequest request, List<Product> productList, int offset) {

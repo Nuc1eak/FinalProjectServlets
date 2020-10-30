@@ -3,8 +3,8 @@ package model.entity.dao.implementation;
 import model.entity.Product;
 import model.entity.dao.ProductDao;
 import model.entity.dao.mappers.ProductMapper;
-import model.exceptions.InvalidInputException;
 import model.exceptions.ProductAlreadyExistException;
+import org.apache.log4j.Logger;
 import util.QueryManager;
 
 import java.sql.*;
@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class JDBCProductDao implements ProductDao {
+    private static final Logger log = Logger.getLogger(JDBCProductDao.class);
+
     private Connection connection;
 
     public JDBCProductDao(Connection connection) {this.connection = connection;}
@@ -46,6 +48,8 @@ public class JDBCProductDao implements ProductDao {
         return entity;
     }
 
+
+
     @Override
     public Product findByNameAndCode(String name, Integer code) {
         final String query = QueryManager.getProperty("product.findByNameOrCode");
@@ -75,8 +79,39 @@ public class JDBCProductDao implements ProductDao {
     }
 
     @Override
+    public Product findByCode(Integer code) {
+        final String query = QueryManager.getProperty("product.findByCode");
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, code);
+            return getProduct(statement);
+        } catch (SQLException ex) {
+            log.info("There is no product by this code: " + code);
+            return null;
+        }
+    }
+
+    @Override
+    public Product findByName(String name) {
+        final String query = QueryManager.getProperty("product.findByName");
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, name);
+            return getProduct(statement);
+        } catch (SQLException ex) {
+            log.info("There is no product with this name: " + name);
+            return null;
+        }
+    }
+
+    @Override
     public Product findById(int id) {
-        return null;
+        final String query = QueryManager.getProperty("product.findByCode");
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            return getProduct(statement);
+        } catch (SQLException ex) {
+            log.info("There is no product with this id: " + id);
+            return null;
+        }
     }
 
     @Override

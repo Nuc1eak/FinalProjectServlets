@@ -1,6 +1,6 @@
 package model.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +14,7 @@ public class Check {
     private int id;
 
     private double totalPrice;
-    private LocalDateTime localDate;
+    private LocalDate localDate;
     private Status status;
 
     private User cashier;
@@ -26,8 +26,8 @@ public class Check {
     public double getTotalPrice() { return totalPrice; }
     public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
 
-    public LocalDateTime getLocalDate() { return localDate; }
-    public void setLocalDate(LocalDateTime localDate) { this.localDate = localDate; }
+    public LocalDate getLocalDate() { return localDate; }
+    public void setLocalDate(LocalDate localDate) { this.localDate = localDate; }
 
     public Status getStatus() {
         if (status == null) {

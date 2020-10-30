@@ -36,6 +36,9 @@ public class Servlet extends HttpServlet {
         commands.put("expert", new ExpertCommand());
         commands.put("expert/newProduct", new ExpertAddProductCommand());
         commands.put("expert/changeAmount", new ExpertChangeProductAmountCommand());
+        commands.put("cashier", new CashierCommand());
+        commands.put("cashier/addProductToCheck", new CashierAddProductCommand());
+        commands.put("superCashier/deleteProduct", new CashierDeleteProductCommand());
 
         log.info("commands initialised");
 

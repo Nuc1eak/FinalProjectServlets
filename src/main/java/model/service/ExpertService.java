@@ -6,6 +6,7 @@ import model.entity.dao.ProductDao;
 import model.exceptions.ProductAlreadyExistException;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ExpertService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
@@ -22,6 +23,18 @@ public class ExpertService {
             return product != null;
         } catch (ProductAlreadyExistException ex) {
             return false;
+        }
+    }
+
+    public Product findProductByCode(Integer code) {
+        try (ProductDao productDao = daoFactory.createProductDao()) {
+            return Optional.ofNullable(productDao.findByCode(code)).orElse(new Product());
+        }
+    }
+
+    public Product findProductByName(String name) {
+        try (ProductDao productDao = daoFactory.createProductDao()) {
+            return Optional.ofNullable(productDao.findByName(name)).orElse(new Product());
         }
     }
 
